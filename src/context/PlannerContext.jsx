@@ -7,7 +7,7 @@ function entriesReducer(entries, { type, payload }) {
   switch (type) {
     case 'create':
       const entry = { ...payload, id: entries.length };
-      return [entry, ...entries];
+      return [...entries, entry];
     case 'reset':
       return [...payload];
     case 'update':
