@@ -3,7 +3,6 @@ import Entry from './EntryItem';
 import styles from './EntryList.css';
 
 export default function Entries() {
-  // TODO: Replace with the entries stored in PlannerContext
   const { entries } = useEntries();
 
   return (
