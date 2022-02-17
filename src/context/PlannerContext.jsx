@@ -4,7 +4,6 @@ import { parseDate } from '../utils/parseDate';
 // payload is an entry object:
 // { title: String, content: String, date: Date }
 function entriesReducer(entries, { type, payload }) {
-  console.log(payload);
   switch (type) {
     case 'create':
       const entry = { ...payload, id: entries.length };
@@ -57,7 +56,6 @@ const PlannerProvider = ({ children }) => {
   };
 
   const updateEntry = (item) => {
-    console.log(item);
     dispatch({
       type: 'update',
       payload: {
