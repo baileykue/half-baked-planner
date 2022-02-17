@@ -7,7 +7,7 @@ function entriesReducer(entries, { type, payload }) {
   switch (type) {
     case 'create':
       const entry = { ...payload, id: entries.length };
-      return [entry, ...entries];
+      return [...entries, entry];
     case 'reset':
       return [...payload];
     case 'update':
@@ -55,12 +55,24 @@ const PlannerProvider = ({ children }) => {
     return entries.find((note) => note.id === Number(id));
   };
 
+  const updateEntry = (item) => {
+    dispatch({
+      type: 'update',
+      payload: {
+        id: item.id,
+        title: item.title,
+        content: item.content,
+      },
+    });
+  };
+
   return (
     <PlannerContext.Provider
       value={{
         entries,
         addEntry,
         getEntry,
+        updateEntry,
       }}
     >
       {children}
