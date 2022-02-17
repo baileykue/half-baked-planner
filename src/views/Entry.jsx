@@ -24,7 +24,12 @@ export default function Entry() {
 
   const handleSubmitSave = () => {
     setEdit(false);
-    updateEntry(formState);
+    updateEntry(entry);
+  };
+
+  const handleChange = ({ target }) => {
+    const { name } = target;
+    setEntry({ ...entry, [name]: target.value });
   };
 
   return (
@@ -37,17 +42,15 @@ export default function Entry() {
           <input
             type="text"
             name="title"
-            placeholder="Plan something"
-            value={entry?.title}
-            onChange={handleFormChange}
+            value={entry.title}
+            onChange={handleChange}
             className={styles.input}
           />
           <p>Due: {entry?.date}</p>
           <textarea
             name="content"
-            placeholder="A brief description of what you're planning"
-            value={entry?.content}
-            onChange={handleFormChange}
+            value={entry.content}
+            onChange={handleChange}
             className={styles.content}
           />
           <button onClick={handleSubmitSave}>Save</button>
